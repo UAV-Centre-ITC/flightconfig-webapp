@@ -1,0 +1,8 @@
+*.pyc
+cscope.out
+*.egg-info
+.cache
+*.eggs
+*.egg
+build/*
+dist/*

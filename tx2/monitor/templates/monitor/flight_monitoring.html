@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integr>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <title> Flight Dashboard </title>
+    
+    <style>
+    .row.row-no-margin {
+    margin-left: 0px;
+    margin-right: 0px;
+    }
+
+    .col-no-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    }
+    </style>
+    
+  </head>
+
+  <body>
+    <div class="container">
+    <div class="row justify-content-center">
+    <div class="col-12">
+    <h1 class "mt-5"> Flight Dashboard</h1>
+    <hr class="mt-4 mb-4">
+
+      <!--Flight recap-->
+      <div class="container">
+      <div class="row justify-content-center">
+      <div class="col-12">
+
+      <div class="tg-wrap"><table>
+      <tbody>
+        <tr>
+          <td class="p-3 mb-2 bg-dark text-white"> Name<br></td>
+          <td class="p-3 mb-2 bg-light text-dark">{{ flightname }}</td>
+        </tr>
+        <tr>
+          <td class="p-3 mb-2 bg-dark text-white"> Camera<br></td>
+          <td class="p-3 mb-2 bg-light text-dark">{{ camera }}</td>
+        </tr>
+        <tr>
+          <td class="p-3 mb-2 bg-dark text-white"> Groundstation<br></td>
+          <td class="p-3 mb-2 bg-light text-dark">{{ gcs }}</td>
+        </tr>
+        <tr>
+          <td class="p-3 mb-2 bg-dark text-white">Deep learning<br></td>
+          <td class="p-3 mb-2 bg-light text-dark">{{ model }}</td>
+        </tr>
+        <tr>
+          <td class="p-3 mb-2 bg-dark text-white">Transferring data</td>
+          <td class="p-3 mb-2 bg-light text-dark">{{ transfer|join:", "  }}</td>
+        </tr>
+        <tr>
+          <td class="p-3 mb-2 bg-dark text-white">Compressed</td>
+          <td class="p-3 mb-2 bg-light text-dark">{{ compressed  }}</td>
+        </tr>
+        <tr>
+          <td class="p-3 mb-2 bg-dark text-white">Notes</td>
+          <td class="p-3 mb-2 bg-light text-dark">{{ notes }}</td>
+        </tr>
+      </tbody>
+      </table></div>
+
+      </div>
+      </div>
+      </div>
+
+      <div class="container">
+      <div class="row justify-content-center">
+      <div class="col-12">
+        
+        <button type="button" onclick="" class="mt-4 mb-4 btn btn-success start-btn">Start camera</button> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script type="text/javascript">
+          function getCookie(c_name)
+            {
+                if (document.cookie.length > 0)
+                {
+                    c_start = document.cookie.indexOf(c_name + "=");
+                    if (c_start != -1)
+                    {
+                        c_start = c_start + c_name.length + 1;
+                        c_end = document.cookie.indexOf(";", c_start);
+                        if (c_end == -1) c_end = document.cookie.length;
+                        return unescape(document.cookie.substring(c_start,c_end));
+                    }
+                }
+                return "";
+             }
+          
+          
+        $('.start-btn').click(function(){
+          $.ajaxSetup({
+          headers: { "X-CSRFToken": getCookie("csrftoken") }
+          });
+          
+        var data = {
+          'action_key': 'start_camera'
+          }
+        $.ajax(
+        {
+            type:"POST",
+            url: "/monitor/{{ flightname }}/",
+            data:{
+              'action_key': 'start_camera'
+            },
+            success: function( data ) 
+            {}
+         })
+        });
+        </script>
+      <button type="button" onclick="" class="mt-4 mb-4 btn btn-danger stop-btn""btn btn-danger">Stop camera</button> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script type="text/javascript">
+          function getCookie(c_name)
+            {
+                if (document.cookie.length > 0)
+                {
+                    c_start = document.cookie.indexOf(c_name + "=");
+                    if (c_start != -1)
+                    {
+                        c_start = c_start + c_name.length + 1;
+                        c_end = document.cookie.indexOf(";", c_start);
+                        if (c_end == -1) c_end = document.cookie.length;
+                        return unescape(document.cookie.substring(c_start,c_end));
+                    }
+                }
+                return "";
+             }
+          
+          
+        $('.stop-btn').click(function(){
+          $.ajaxSetup({
+          headers: { "X-CSRFToken": getCookie("csrftoken") }
+          });
+        $.ajax(
+        {
+            type:"POST",
+            url: "/monitor/{{ flightname }}/",
+            data:{
+              'action_key': 'stop_camera'
+            },
+            success: function( data ) 
+            {}
+         })
+        });
+        </script>
+        
+        <button type="button" onclick="" class="mt-4 mb-4 btn btn-warning stop-flight">Stop flight</button> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script type="text/javascript">
+          function getCookie(c_name)
+            {
+                if (document.cookie.length > 0)
+                {
+                    c_start = document.cookie.indexOf(c_name + "=");
+                    if (c_start != -1)
+                    {
+                        c_start = c_start + c_name.length + 1;
+                        c_end = document.cookie.indexOf(";", c_start);
+                        if (c_end == -1) c_end = document.cookie.length;
+                        return unescape(document.cookie.substring(c_start,c_end));
+                    }
+                }
+                return "";
+             }
+          
+          
+        $('.stop-flight').click(function(){
+          $.ajaxSetup({
+          headers: { "X-CSRFToken": getCookie("csrftoken") }
+          });
+          
+        var data = {
+          'action_key': 'stop_flight'
+          }
+        $.ajax(
+        {
+            type:"POST",
+            url: "/monitor/{{ flightname }}/",
+            data:{
+              'action_key': 'stop_flight'
+            },
+            success: function( data ) 
+            {}
+         })
+        });
+        </script>
+      </div>
+      </div>
+      </div>
+      
+      <hr class="mt-0 mb-4">
+
+      <!--Flight log-->
+      <div class="container">
+      <div class="row justify-content-center">
+      <div class="col-12">
+      <h4 class "mt-2"> Camera log </h4>
+      <textarea id="camera-log" class="col-12" cols="100" rows="8"></textarea><br>
+        {{ flightname|json_script:"flight-name" }}
+        <script>
+            const cameraRoomName = JSON.parse(document.getElementById('flight-name').textContent);
+
+            const cameraLogSocket = new WebSocket(
+                'wss://'
+                + window.location.host
+                + '/ws/monitor/'
+                + cameraRoomName
+                + '/'
+            );
+
+            cameraLogSocket.onmessage = function(e) {
+                const data = JSON.parse(e.data);
+                if (data.data.cameralogmessage){
+                    var mess = document.querySelector('#camera-log').value
+                   document.querySelector('#camera-log').value = (data.data.cameralogmessage + '\n') + mess;
+                }
+            };
+
+            cameraLogSocket.onclose = function(e) {
+                console.error('Camera log socket closed unexpectedly');
+            };
+        </script>
+
+      </div>
+      </div>
+      </div>
+
+      <hr class="mt-0 mb-4">
+
+      
+
+      <!--Original images-->
+      <div class="container">
+      <div class="row justify-content-center">
+      <div class="col-12">
+      <h4 class "mt-2"> Original images</h4>
+        {% load static %}
+        
+        <div class="mb-4 row justify-content-center">
+          <div class="col-12 col-sm col-no-padding">
+            <h6 id="thumb1_t" class="mt-2">  </h6>
+            <img id="thumb1" class="thumbnail img-responsive" src="">
+          </div>
+          <div class="col-12 col-sm col-no-padding">
+            <h6 id="thumb2_t" class="mt-2"> </h6>
+            <img id="thumb2" class="thumbnail img-responsive" src="">
+          </div>
+          <div class="col-12 col-sm col-no-padding">
+            <h6 id="thumb3_t" class="mt-2"> </h6>
+            <img id="thumb3" class="thumbnail img-responsive" src="">
+          </div>
+          <div class="col-12 col-sm col-no-padding">
+            <h6 id="thumb4_t" class="mt-2"> </h6>
+            <img id="thumb4" class="thumbnail img-responsive" src="">
+          </div>
+          <div class="col-12 col-sm col-no-padding">
+            <h6 id="thumb5_t" class="mt-2"> </h6>
+            <img id="thumb5" class="thumbnail img-responsive" src="">
+          </div>
+        </div>
+        
+        
+        <script>
+            var media_prefix = "{% get_media_prefix %}";
+
+            const originalsRoomName = JSON.parse(document.getElementById('flight-name').textContent);
+
+            const originalsLogSocket = new WebSocket(
+                'wss://'
+                + window.location.host
+                + '/ws/monitor/'
+                + originalsRoomName
+                + '/'
+            );
+            
+            originalsLogSocket.onmessage = function(e) {
+                const data = JSON.parse(e.data);
+                if (data.data.thumb1){
+                  $("#thumb1").attr('src', media_prefix + data.data.thumb1);
+                  document.getElementById("thumb1_t").innerHTML = data.data.thumb1_t;
+                }
+                if (data.data.thumb2){
+                  $("#thumb2").attr('src', media_prefix + data.data.thumb2);
+                  document.getElementById("thumb2_t").innerHTML = data.data.thumb2_t;
+                }
+                if (data.data.thumb3){
+                  $("#thumb3").attr('src', media_prefix + data.data.thumb3);
+                  document.getElementById("thumb3_t").innerHTML = data.data.thumb3_t;
+                }
+                if (data.data.thumb4){
+                  $("#thumb4").attr('src', media_prefix + data.data.thumb4);
+                  document.getElementById("thumb4_t").innerHTML = data.data.thumb4_t;
+                }
+                if (data.data.thumb5){
+                  $("#thumb5").attr('src', media_prefix + data.data.thumb5);
+                  document.getElementById("thumb5_t").innerHTML = data.data.thumb5_t;
+                }
+            };
+
+            originalsLogSocket.onclose = function(e) {
+                console.error('Original image socket closed unexpectedly');
+            };
+        </script>
+      </div>
+      </div>
+      </div>
+
+      <hr class="mt-0 mb-4">
+      <!--Deep learning log-->
+      <div class="container">
+      <div class="row justify-content-center">
+      <div class="col-12">
+      <h4 class "mt-2"> Deep learning log </h4>
+      <textarea id="processing-log" class="col-12" cols="100" rows="8"></textarea><br>
+        {{ flightname|json_script:"flight-name" }}
+        <script>
+            const processingRoomName = JSON.parse(document.getElementById('flight-name').textContent);
+
+            const processingLogSocket = new WebSocket(
+                'wss://'
+                + window.location.host
+                + '/ws/monitor/'
+                + processingRoomName
+                + '/'
+            );
+            
+            processingLogSocket.onmessage = function(e) {
+                const data = JSON.parse(e.data);
+                if (data.data.processinglogmessage){
+                    var mess = document.querySelector('#processing-log').value
+                    document.querySelector('#processing-log').value = (data.data.processinglogmessage + '\n') + mess;
+                }
+            };
+
+            processingLogSocket.onclose = function(e) {
+                console.error('Processing log socket closed unexpectedly');
+            };
+        </script>
+      </div>
+      </div>
+      </div>
+
+      <hr class="mt-0 mb-4">
+
+      <!--Images showing deep learning results-->
+      <div class="container">
+      <div class="row justify-content-center">
+      <div class="col-12">
+      <h4 class "mt-2"> Deep learning images</h4>
+
+      <div class="mb-4 row justify-content-center">
+          <div class="col-12 col-sm col-no-padding">
+            <h6 id="obj_thumb1_t" class="mt-2">  </h6>
+            <img id="obj_thumb1" class="thumbnail img-responsive" src="">
+          </div>
+          <div class="col-12 col-sm col-no-padding">
+            <h6 id="obj_thumb2_t" class="mt-2"> </h6>
+            <img id="obj_thumb2" class="thumbnail img-responsive" src="">
+          </div>
+          <div class="col-12 col-sm col-no-padding">
+            <h6 id="obj_thumb3_t" class="mt-2"> </h6>
+            <img id="obj_thumb3" class="thumbnail img-responsive" src="">
+          </div>
+          <div class="col-12 col-sm col-no-padding">
+            <h6 id="obj_thumb4_t" class="mt-2"> </h6>
+            <img id="obj_thumb4" class="thumbnail img-responsive" src="">
+          </div>
+          <div class="col-12 col-sm col-no-padding">
+            <h6 id="obj_thumb5_t" class="mt-2"> </h6>
+            <img id="obj_thumb5" class="thumbnail img-responsive" src="">
+          </div>
+        </div>
+
+          <div class="mb-4 row justify-content-center">
+          <div class="col-12 col-sm col-no-padding">
+            <h6 id="seg_thumb1_t" class="mt-2">  </h6>
+            <img id="seg_thumb1" class="thumbnail img-responsive" src="">
+          </div>
+          <div class="col-12 col-sm col-no-padding">
+            <h6 id="seg_thumb2_t" class="mt-2"> </h6>
+            <img id="seg_thumb2" class="thumbnail img-responsive" src="">
+          </div>
+          <div class="col-12 col-sm col-no-padding">
+            <h6 id="seg_thumb3_t" class="mt-2"> </h6>
+            <img id="seg_thumb3" class="thumbnail img-responsive" src="">
+          </div>
+          <div class="col-12 col-sm col-no-padding">
+            <h6 id="seg_thumb4_t" class="mt-2"> </h6>
+            <img id="seg_thumb4" class="thumbnail img-responsive" src="">
+          </div>
+          <div class="col-12 col-sm col-no-padding">
+            <h6 id="seg_thumb5_t" class="mt-2"> </h6>
+            <img id="seg_thumb5" class="thumbnail img-responsive" src="">
+          </div>
+        </div>
+        
+        
+        <script>
+            var media_prefix = "{% get_media_prefix %}";
+
+            const imagesRoomName = JSON.parse(document.getElementById('flight-name').textContent);
+
+            const imagesLogSocket = new WebSocket(
+                'wss://'
+                + window.location.host
+                + '/ws/monitor/'
+                + imagesRoomName
+                + '/'
+            );
+            
+            imagesLogSocket.onmessage = function(e) {
+                const data = JSON.parse(e.data);
+                if (data.data.obj_thumb1){
+                  $("#obj_thumb1").attr('src', media_prefix + data.data.obj_thumb1);
+                  document.getElementById("obj_thumb1_t").innerHTML = data.data.obj_thumb1_t;
+                }
+                if (data.data.obj_thumb2){
+                  $("#obj_thumb2").attr('src', media_prefix + data.data.obj_thumb2);
+                  document.getElementById("obj_thumb2_t").innerHTML = data.data.obj_thumb2_t;
+                }
+                if (data.data.obj_thumb3){
+                  $("#obj_thumb3").attr('src', media_prefix + data.data.obj_thumb3);
+                  document.getElementById("obj_thumb3_t").innerHTML = data.data.obj_thumb3_t;
+                }
+                if (data.data.obj_thumb4){
+                  $("#obj_thumb4").attr('src', media_prefix + data.data.obj_thumb4);
+                  document.getElementById("obj_thumb4_t").innerHTML = data.data.obj_thumb4_t;
+                }
+                if (data.data.obj_thumb5){
+                  $("#obj_thumb5").attr('src', media_prefix + data.data.obj_thumb5);
+                  document.getElementById("obj_thumb5_t").innerHTML = data.data.obj_thumb5_t;
+                }
+                if (data.data.seg_thumb1){
+                  $("#seg_thumb1").attr('src', media_prefix + data.data.seg_thumb1);
+                  document.getElementById("seg_thumb1_t").innerHTML = data.data.seg_thumb1_t;
+                }
+                if (data.data.seg_thumb2){
+                  $("#seg_thumb2").attr('src', media_prefix + data.data.seg_thumb2);
+                  document.getElementById("seg_thumb2_t").innerHTML = data.data.seg_thumb2_t;
+                }
+                if (data.data.seg_thumb3){
+                  $("#seg_thumb3").attr('src', media_prefix + data.data.seg_thumb3);
+                  document.getElementById("seg_thumb3_t").innerHTML = data.data.seg_thumb3_t;
+                }
+                if (data.data.seg_thumb4){
+                  $("#seg_thumb4").attr('src', media_prefix + data.data.seg_thumb4);
+                  document.getElementById("seg_thumb4_t").innerHTML = data.data.seg_thumb4_t;
+                }
+                if (data.data.seg_thumb5){
+                  $("#seg_thumb5").attr('src', media_prefix + data.data.seg_thumb5);
+                  document.getElementById("seg_thumb5_t").innerHTML = data.data.seg_thumb5_t;
+                }
+            };
+
+            imagesLogSocket.onclose = function(e) {
+                console.error('Detections socket closed unexpectedly');
+            };
+        </script>
+        
+        {% load static %}
+        <img class="mb-4 row justify-content-center" src="{% static 'legend.jpg' %}">
+      
+      </div>
+      </div>
+      </div>
+
+      <hr class="mt-0 mb-4">
+      
+      <!--Transfer log-->
+      <div class="container">
+      <div class="row justify-content-center">
+      <div class="col-12">
+      <h4 class "mt-2"> Transfer log </h4>
+      <textarea id="transfer-log" class="col-12" cols="100" rows="8"></textarea><br>
+        {{ flightname|json_script:"flight-name" }}
+        <script>
+            const transferRoomName = JSON.parse(document.getElementById('flight-name').textContent);
+
+            const transferLogSocket = new WebSocket(
+                'wss://'
+                + window.location.host
+                + '/ws/monitor/'
+                + transferRoomName
+                + '/'
+            );
+            
+            transferLogSocket.onmessage = function(e) {
+                const data = JSON.parse(e.data);
+                var mess = document.querySelector('#transfer-log').value
+                if (data.data.transferlogmessage1){
+                    document.querySelector('#transfer-log').value = (data.data.transferlogmessage1 + '\n') + mess;
+                }
+                if (data.data.transferlogmessage2){
+                  document.querySelector('#transfer-log').value = (data.data.transferlogmessage2 + '\n') + mess;
+                }
+                if (data.data.transferlogmessage3){
+                  document.querySelector('#transfer-log').value = (data.data.transferlogmessage3 + '\n') + mess;
+                }
+                if (data.data.transferlogmessage4){
+                  document.querySelector('#transfer-log').value = (data.data.transferlogmessage4 + '\n') + mess;
+                }
+                if (data.data.transferlogmessage5){
+                  document.querySelector('#transfer-log').value = (data.data.transferlogmessage5 + '\n') + mess;
+                }
+                if (data.data.transferlogmessage6){
+                  document.querySelector('#transfer-log').value = (data.data.transferlogmessage6 + '\n') + mess;
+                }
+                if (data.data.transferlogmessage7){
+                  document.querySelector('#transfer-log').value = (data.data.transferlogmessage7 + '\n') + mess;
+                }
+            };
+
+            transferLogSocket.onclose = function(e) {
+                console.error('Transfer log socket closed unexpectedly');
+            };
+        </script>
+      </div>
+      </div>
+      </div>
+
+      <hr class="mt-0 mb-4">
+
+  </div>
+  </div>
+  </div>
+
+  </body>
+</html>

@@ -1,0 +1,18 @@
+start celery workers
+celery -A tx2.celery worker -l DEBUG -E
+
+python3 manage.py runserver
+
+sudo python3 tegrastats2.py --bin=/usr/bin/teastats --output=./tegrastats.log --params "--interval 500"
+
+rsync -a --relative Flights/flight_151121_1356/SODA_images_thumb/151121_142414_128x128.jpg sofia@192.168.1.25:~/Documents/
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-18-04
+
+#Install tensorflow
+https://developer.download.nvidia.com/compute/redist/jp/v45/tensorflow/tensorflow-2.4.0+nv21.4-cp36-cp36m-linux_aarch64.whl
+
+
+TODO:
+Interpolate gps coordinates if gps read is not working
+Test on 4g: make laptop public

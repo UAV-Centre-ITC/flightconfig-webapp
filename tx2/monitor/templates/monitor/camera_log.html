@@ -1,0 +1,36 @@
+<!-- monitor/templates/monitor/camera_log.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Camera log</title>
+</head>
+<body>
+	<h1 id="flight_name"> {{ flightname }} </h1>
+    <textarea id="camera-log" cols="100" rows="20"></textarea><br>
+    <script>
+        const roomName = 'camera_log'
+        const flightName = JSON.parse(document.getElementById('flight_name').textContent);
+
+        const chatSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/monitor/'
+            + flightName
+            + '/'
+            + roomName
+        );
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            document.querySelector('#camera-log').value += (data.message + '\n');
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Camera log socket closed unexpectedly');
+        };
+
+
+    </script>
+</body>
+</html>

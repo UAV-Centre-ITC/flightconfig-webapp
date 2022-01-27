@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang=="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <title>Flight configuration</title>
+    </head>
+    <body>
+        <div class="container">
+        <div class="row justify-content-center">
+        <div class="col-8">
+          <h1 class="mt-2">Configure flight</h1>
+          <hr class="mt-0 mb-4">
+
+            {% load crispy_forms_tags %}
+
+            {% block content %}
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type="submit" id="btnFetch" class="btn btn-info mb-2">Start</button>
+                    
+                </form>
+            {% endblock %}
+        
+            <script type="text/javascript">
+            $(document).ready(function() {
+            $("#btnFetch").click(function() {
+              // add spinner to button
+            $(this).html(
+                 `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Initializing`
+                    );
+                });
+                }); 
+            </script>
+        
+        </div>
+        </div>
+        </div>
+    </body>
+</html>

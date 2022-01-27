@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integr>
+    <title> Monitoring flight </title>
+  </head>
+  <body>
+    <div class="container">
+    <div class="row justify-content-center">
+    <div class="col-8">
+    <h1 class "mt-2"> Monitoring flight</h1>
+   <hr class="mt-0 mb-4">
+
+      <!--Original images-->
+      <div class="container">
+      <div class="row justify-content-center">
+      <div class="col-8">
+      <h3 class "mt-2"> Original images</h3>
+
+      <div class="row">
+        <div class="column">
+          {% load static %} <img src="{% static "monitor/images/DJI_0011_C.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0011_D.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0012_A.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0012_B.JPG" %}" style="width:25%"/>
+        </div>
+        <div class="column">
+          {% load static %} <img src="{% static "monitor/images/DJI_0013_B.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0013_C.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0013_D.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0014_A.JPG" %}" style="width:25%"/>
+        </div>
+        <div class="column">
+          {% load static %} <img src="{% static "monitor/images/DJI_0014_D.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0015_A.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0015_B.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0015_C.JPG" %}" style="width:25%"/>
+        </div>
+        <div class="column">
+          {% load static %} <img src="{% static "monitor/images/DJI_0016_C.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0016_D.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0017_A.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0017_B.JPG" %}" style="width:25%"/>
+        </div>
+      </div>
+
+      </div>
+      </div>
+      </div>
+
+      <hr class="mt-0 mb-4">
+
+      <!--Images showing detections-->
+      <div class="container">
+      <div class="row justify-content-center">
+      <div class="col-8">
+      <h3 class "mt-2"> Detections</h3>
+
+      <div class="row">
+        <div class="column">
+          {% load static %} <img src="{% static "monitor/images/DJI_0011_C.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0011_D.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0012_A.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0012_B.JPG" %}" style="width:25%"/>
+        </div>
+        <div class="column">
+          {% load static %} <img src="{% static "monitor/images/DJI_0013_B.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0013_C.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0013_D.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0014_A.JPG" %}" style="width:25%"/>
+        </div>
+        <div class="column">
+          {% load static %} <img src="{% static "monitor/images/DJI_0014_D.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0015_A.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0015_B.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0015_C.JPG" %}" style="width:25%"/>
+        </div>
+        <div class="column">
+          {% load static %} <img src="{% static "monitor/images/DJI_0016_C.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0016_D.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0017_A.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0017_B.JPG" %}" style="width:25%"/>
+        </div>
+      </div>
+
+      </div>
+      </div>
+      </div>
+
+      <hr class="mt-0 mb-4">
+
+      <!--Images showing segmentations-->
+      <div class="container">
+      <div class="row justify-content-center">
+      <div class="col-8">
+      <h3 class "mt-2"> Segmentations </h3>
+
+      <div class="row">
+        <div class="column">
+          {% load static %} <img src="{% static "monitor/images/DJI_0011_C.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0011_D.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0012_A.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0012_B.JPG" %}" style="width:25%"/>
+        </div>
+        <div class="column">
+          {% load static %} <img src="{% static "monitor/images/DJI_0013_B.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0013_C.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0013_D.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0014_A.JPG" %}" style="width:25%"/>
+        </div>
+        <div class="column">
+          {% load static %} <img src="{% static "monitor/images/DJI_0014_D.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0015_A.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0015_B.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0015_C.JPG" %}" style="width:25%"/>
+        </div>
+        <div class="column">
+          {% load static %} <img src="{% static "monitor/images/DJI_0016_C.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0016_D.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0017_A.JPG" %}" style="width:25%"/>
+          {% load static %} <img src="{% static "monitor/images/DJI_0017_B.JPG" %}" style="width:25%"/>
+        </div>
+      </div>
+
+      </div>
+      </div>
+      </div>
+
+      <hr class="mt-0 mb-4">
+
+  </div>
+  </div>
+  </div>
+
+  </body>
+</html>

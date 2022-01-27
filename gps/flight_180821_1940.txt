@@ -1,0 +1,35 @@
+ERROR:dronekit:Exception in message handler for HEARTBEAT
+Traceback (most recent call last):
+  File "/home/jetsontx2/Documents/models/multeye/multeyevenv/lib/python3.6/site-packages/dronekit/__init__.py", line 1531, in notify_message_listeners
+    fn(self, name, msg)
+  File "/home/jetsontx2/Documents/models/multeye/multeyevenv/lib/python3.6/site-packages/dronekit/__init__.py", line 1223, in listener
+    raise APIException("mode (%s, %s) not available on mavlink definition" % (m.custom_mode, m.base_mode))
+dronekit.APIException: mode (50593792, 93) not available on mavlink definition
+ERROR:dronekit:Exception in message handler for HEARTBEAT
+Traceback (most recent call last):
+  File "/home/jetsontx2/Documents/models/multeye/multeyevenv/lib/python3.6/site-packages/dronekit/__init__.py", line 1531, in notify_message_listeners
+    fn(self, name, msg)
+  File "/home/jetsontx2/Documents/models/multeye/multeyevenv/lib/python3.6/site-packages/dronekit/__init__.py", line 1223, in listener
+    raise APIException("mode (%s, %s) not available on mavlink definition" % (m.custom_mode, m.base_mode))
+dronekit.APIException: mode (50593792, 93) not available on mavlink definition
+ERROR:dronekit:Exception in message handler for HEARTBEAT
+Traceback (most recent call last):
+  File "/home/jetsontx2/Documents/models/multeye/multeyevenv/lib/python3.6/site-packages/dronekit/__init__.py", line 1531, in notify_message_listeners
+    fn(self, name, msg)
+  File "/home/jetsontx2/Documents/models/multeye/multeyevenv/lib/python3.6/site-packages/dronekit/__init__.py", line 1223, in listener
+    raise APIException("mode (%s, %s) not available on mavlink definition" % (m.custom_mode, m.base_mode))
+dronekit.APIException: mode (50593792, 93) not available on mavlink definition
+ERROR:dronekit:Exception in message handler for HEARTBEAT
+Traceback (most recent call last):
+  File "/home/jetsontx2/Documents/models/multeye/multeyevenv/lib/python3.6/site-packages/dronekit/__init__.py", line 1531, in notify_message_listeners
+    fn(self, name, msg)
+  File "/home/jetsontx2/Documents/models/multeye/multeyevenv/lib/python3.6/site-packages/dronekit/__init__.py", line 1223, in listener
+    raise APIException("mode (%s, %s) not available on mavlink definition" % (m.custom_mode, m.base_mode))
+dronekit.APIException: mode (50593792, 93) not available on mavlink definition
+ERROR:dronekit:Exception in message handler for HEARTBEAT
+Traceback (most recent call last):
+  File "/home/jetsontx2/Documents/models/multeye/multeyevenv/lib/python3.6/site-packages/dronekit/__init__.py", line 1531, in notify_message_listeners
+    fn(self, name, msg)
+  File "/home/jetsontx2/Documents/models/multeye/multeyevenv/lib/python3.6/site-packages/dronekit/__init__.py", line 1223, in listener
+    raise APIException("mode (%s, %s) not available on mavlink definition" % (m.custom_mode, m.base_mode))
+dronekit.APIException: mode (50593792, 93) not available on mavlink definition
